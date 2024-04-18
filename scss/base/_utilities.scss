@@ -1,0 +1,50 @@
+//extend
+.contenedor-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+//mixin sin parametros
+
+@mixin contenedor-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+//mixin con parametros
+
+@mixin flex($direction, $justify, $align, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+
+@mixin img($width, $height, $object){
+  width: $width;
+  height: $height;
+  object-fit: $object;
+}
+
+@mixin texto($size, $family, $align, $grosor, $color){
+  font-size: $size;
+  font-family: $family;
+  text-align: $align;
+  font-weight: $grosor;
+  color:$color;
+}
+
+
+p{
+  @include texto(1.5rem,'Gill Sans', justify, bold, gray);
+}
+
+img {
+  @include img(100%,100%,cover);
+}

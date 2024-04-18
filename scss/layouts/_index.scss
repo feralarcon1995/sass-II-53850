@@ -1,0 +1,91 @@
+$temporada: invierno;
+
+.container {
+  padding: 20px;
+  min-height: 100vh;
+  max-height: 100%;
+  display: grid;
+  place-content: center;
+
+  @if $temporada == invierno {
+    background-color: rgb(25, 27, 89);
+    color: white;
+  } @else if $temporada == verano {
+    background-color: coral;
+  } @else if $temporada == navidad {
+    background-color: rgb(27, 73, 27);
+    color: red;
+  } @else {
+    background-color: pink;
+  }
+}
+
+//bucles bucle for
+
+@for $jorgito from 1 to 6 {
+  .p-#{$jorgito} {
+    padding: $jorgito * 10px;
+  }
+
+  .m-#{$jorgito} {
+    margin: $jorgito * 10px;
+  }
+
+  .fs-#{$jorgito} {
+    font-size: 10px * $jorgito;
+  }
+
+  .col-#{$jorgito} {
+    width: 10% * $jorgito;
+  }
+}
+
+.btn-container {
+  // @extend .contenedor-flex;
+  @include flex(row, space-between, center, 0);
+  flex-wrap: wrap;
+
+  a {
+    @include texto(1.4rem,'Trebuchet MS', center, 700, white);
+    text-decoration: none;  }
+}
+
+//each
+
+@each $key, $valor in $colores {
+  .btn-#{$key} {
+    background-color: $valor;
+    padding: 10px;
+    border-radius: 10px;
+    transition: 0.4s;
+
+    @if $key == light {
+      color: #000;
+      border: 1px solid darken($valor, 20%);
+
+      &:hover {
+        background: darken($valor, 40%);
+      }
+    } @else if $key == dark {
+      color: #fff;
+      border: 1px solid lighten($valor, 20%);
+      &:hover {
+        background: lighten($valor, 30%);
+      }
+    } @else {
+      color: #fff;
+      border: 1px solid lighten($valor, 20%);
+      &:hover {
+        background: darken($valor, 20%);
+      }
+    }
+  }
+
+  .bg-#{$key} {
+    background-color: $valor;
+  }
+
+  .text-#{$key} {
+    color: $valor;
+  }
+}
